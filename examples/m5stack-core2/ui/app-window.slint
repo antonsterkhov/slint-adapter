@@ -1,0 +1,144 @@
+import { Button, VerticalBox } from "std-widgets.slint";
+
+component HomeScreen inherits Rectangle {
+    in property <int> counter;
+    callback increment-requested();
+    callback details-requested();
+
+    background: #111827;
+
+    VerticalBox {
+        padding: 18px;
+        spacing: 10px;
+
+        Text {
+            text: "M5Stack Core2";
+            color: #f9fafb;
+            font-size: 26px;
+            horizontal-alignment: center;
+        }
+
+        Text {
+            text: "Slint home screen";
+            color: #93c5fd;
+            font-size: 17px;
+            horizontal-alignment: center;
+        }
+
+        Rectangle {
+            height: 55px;
+            background: #1f2937;
+            border-radius: 10px;
+
+            Text {
+                text: "Button clicks: \{root.counter}";
+                color: #f9fafb;
+                font-size: 22px;
+                horizontal-alignment: center;
+                vertical-alignment: center;
+            }
+        }
+
+        Button {
+            text: "Add click";
+            clicked => {
+                root.increment-requested();
+            }
+        }
+
+        Button {
+            text: "Open details";
+            clicked => {
+                root.details-requested();
+            }
+        }
+    }
+}
+
+component DetailsScreen inherits Rectangle {
+    in property <int> counter;
+    callback back-requested();
+
+    background: #172554;
+
+    VerticalBox {
+        padding: 20px;
+        spacing: 12px;
+
+        Text {
+            text: "Details screen";
+            color: #f9fafb;
+            font-size: 27px;
+            horizontal-alignment: center;
+        }
+
+        Rectangle {
+            background: #1e3a8a;
+            border-radius: 10px;
+
+            VerticalBox {
+                padding: 12px;
+                spacing: 6px;
+
+                Text {
+                    text: "Navigation works";
+                    color: #bfdbfe;
+                    font-size: 18px;
+                    horizontal-alignment: center;
+                }
+
+                Text {
+                    text: "Clicks from home: \{root.counter}";
+                    color: #ffffff;
+                    font-size: 21px;
+                    horizontal-alignment: center;
+                }
+            }
+        }
+
+        Button {
+            text: "Back to home";
+            clicked => {
+                root.back-requested();
+            }
+        }
+    }
+}
+
+export component AppWindow inherits Window {
+    width: 320px;
+    height: 240px;
+
+    in-out property <int> counter: 0;
+    in-out property <bool> show-details: false;
+
+    callback increment-requested();
+    callback details-requested();
+    callback back-requested();
+
+    HomeScreen {
+        width: parent.width;
+        height: parent.height;
+        visible: !root.show-details;
+        counter: root.counter;
+
+        increment-requested => {
+            root.increment-requested();
+        }
+
+        details-requested => {
+            root.details-requested();
+        }
+    }
+
+    DetailsScreen {
+        width: parent.width;
+        height: parent.height;
+        visible: root.show-details;
+        counter: root.counter;
+
+        back-requested => {
+            root.back-requested();
+        }
+    }
+}

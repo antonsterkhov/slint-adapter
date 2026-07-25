@@ -1,0 +1,31 @@
+[package]
+name = "slint-adapter"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.92"
+description = "A no_std Slint platform adapter for mipidsi displays and touch input"
+license = "MIT"
+documentation = "https://docs.rs/slint-adapter"
+homepage = "https://github.com/antonsterkhov/slint-adapter"
+repository = "https://github.com/antonsterkhov/slint-adapter.git"
+readme = "README.md"
+keywords = ["slint", "mipidsi", "embedded", "no-std", "touch"]
+categories = ["embedded", "gui", "no-std"]
+
+[dependencies]
+embedded-graphics-core = "0.4.1"
+embedded-hal = "1.0.0"
+mipidsi = { version = "0.10.0", default-features = false }
+slint = { version = "1.17.1", default-features = false, features = [
+    "compat-1-2",
+    "libm",
+    "renderer-software",
+    "unsafe-single-threaded",
+] }
+
+[dev-dependencies]
+static_assertions = "1.1.0"
+
+[package.metadata.docs.rs]
+default-target = "thumbv8m.main-none-eabihf"
+rustdoc-args = ["--cfg", "docsrs"]
