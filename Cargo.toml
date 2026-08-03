@@ -1,13 +1,13 @@
 [package]
-name = "slint-adapter"
-version = "0.1.0"
+name = "slint-mipidsi-adapter"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.92"
 description = "A no_std Slint platform adapter for mipidsi displays and touch input"
 license = "MIT"
-documentation = "https://docs.rs/slint-adapter"
-homepage = "https://github.com/antonsterkhov/slint-adapter"
-repository = "https://github.com/antonsterkhov/slint-adapter.git"
+documentation = "https://docs.rs/slint-mipidsi-adapter"
+homepage = "https://github.com/antonsterkhov/slint-mipidsi-adapter"
+repository = "https://github.com/antonsterkhov/slint-mipidsi-adapter.git"
 readme = "README.md"
 keywords = ["slint", "mipidsi", "embedded", "no-std", "touch"]
 categories = ["embedded", "gui", "no-std"]

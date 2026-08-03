@@ -1,8 +1,8 @@
-# slint-adapter
+# slint-mipidsi-adapter
 
 **English** | [Русская версия](README.ru.md)
 
-`slint-adapter` is a small `#![no_std]` Slint platform adapter for
+`slint-mipidsi-adapter` is a small `#![no_std]` Slint platform adapter for
 microcontrollers. It connects:
 
 - a configured, but not yet initialized, `mipidsi::Builder`;
@@ -37,7 +37,7 @@ the target board and remain the responsibility of the application's BSP.
 
 ```toml
 [dependencies]
-slint-adapter = "0.1.0"
+slint-mipidsi-adapter = "0.2.0"
 
 slint = { version = "1.17.1", default-features = false, features = [
     "compat-1-2",
@@ -82,7 +82,7 @@ extern crate alloc;
 
 use core::time::Duration;
 use slint::ComponentHandle;
-use slint_adapter::{
+use slint_mipidsi_adapter::{
     AdapterBuilder, McuRuntime, TouchInput, TouchPoint,
 };
 
@@ -195,7 +195,7 @@ One `McuEventLoop::step` call:
 5. returns the maximum duration until the next call.
 
 A complete ESP32 implementation is available in
-[`examples/m5stack-core2`](https://github.com/antonsterkhov/slint-adapter/tree/main/examples/m5stack-core2).
+[`examples/m5stack-core2`](https://github.com/antonsterkhov/slint-mipidsi-adapter/tree/main/examples/m5stack-core2).
 
 ## Display without touch
 
@@ -203,7 +203,7 @@ Use `AdapterBuilderWithoutTouch` when the product has no touch controller or
 when input is handled entirely through another mechanism:
 
 ```rust,ignore
-use slint_adapter::AdapterBuilderWithoutTouch;
+use slint_mipidsi_adapter::AdapterBuilderWithoutTouch;
 
 let app = AdapterBuilderWithoutTouch::new(display_builder, runtime)
     .build(&mut delay, AppWindow::new)?;
@@ -331,7 +331,7 @@ use embedded_hal::i2c::I2c;
 use ft6336u_driver::{
     Error, FT6336U, GestureMode, TouchStatus,
 };
-use slint_adapter::{TouchInput, TouchPoint};
+use slint_mipidsi_adapter::{TouchInput, TouchPoint};
 
 struct Ft6336Touch<I2C> {
     controller: FT6336U<I2C>,
@@ -539,4 +539,4 @@ SPI frequency, display-interface buffer size, and DMA in the target MCU's BSP.
 - [Slint `LineBufferProvider`](https://docs.slint.dev/latest/docs/rust/slint/platform/software_renderer/trait.LineBufferProvider)
 - [`mipidsi::Builder`](https://docs.rs/mipidsi/0.10.0/mipidsi/struct.Builder.html)
 - [`mipidsi::Display`](https://docs.rs/mipidsi/0.10.0/mipidsi/struct.Display.html)
-- [M5Stack Core2 hardware example](https://github.com/antonsterkhov/slint-adapter/tree/main/examples/m5stack-core2)
+- [M5Stack Core2 hardware example](https://github.com/antonsterkhov/slint-mipidsi-adapter/tree/main/examples/m5stack-core2)

@@ -3392,8 +3392,8 @@ dependencies = [
  "log",
  "mipidsi",
  "slint",
- "slint-adapter",
  "slint-build",
+ "slint-mipidsi-adapter",
  "static_cell",
 ]
 
@@ -5145,16 +5145,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "slint-adapter"
-version = "0.1.0"
-dependencies = [
- "embedded-graphics-core",
- "embedded-hal 1.0.0",
- "mipidsi",
- "slint",
-]
-
-[[package]]
 name = "slint-build"
 version = "1.17.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5177,6 +5167,16 @@ dependencies = [
  "proc-macro2",
  "quote",
  "spin_on",
+]
+
+[[package]]
+name = "slint-mipidsi-adapter"
+version = "0.2.0"
+dependencies = [
+ "embedded-graphics-core",
+ "embedded-hal 1.0.0",
+ "mipidsi",
+ "slint",
 ]
 
 [[package]]

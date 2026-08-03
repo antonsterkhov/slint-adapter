@@ -6,7 +6,7 @@ use embedded_hal_bus::spi::ExclusiveDevice;
 use esp_hal::{Blocking, delay::Delay, gpio::Output, spi::master::Spi};
 use mipidsi::{Builder, interface::SpiInterface, models::ILI9342CRgb565, options::ColorInversion};
 use slint::ComponentHandle;
-use slint_adapter::{AdapterBuilder, McuRuntime};
+use slint_mipidsi_adapter::{AdapterBuilder, McuRuntime};
 use static_cell::ConstStaticCell;
 
 use crate::{SharedI2cDevice, power::Core2Power, touch::Core2Touch};

@@ -10,7 +10,7 @@
 - `mipidsi 0.10` и `ILI9342CRgb565` для LCD;
 - `ft6336u-driver 1.0` для тач-контроллера;
 - `axp192 0.2` для питания LCD, подсветки и общей линии reset;
-- локальный `slint-adapter` и Slint software renderer.
+- локальный `slint-mipidsi-adapter` и Slint software renderer.
 
 ## Подключённая периферия
 
@@ -83,7 +83,7 @@ FT6336U настроен в polling mode. На каждом шаге event loop 
 LCD `320×240`. Пример передаёт в Slint только точки с `y < 240`. Касания ниже
 видимой области отбрасываются, а не прижимаются к нижней границе экрана.
 
-`slint-adapter` превращает последовательность состояний в события:
+`slint-mipidsi-adapter` превращает последовательность состояний в события:
 
 - первый контакт → `PointerPressed`;
 - изменение координат → `PointerMoved`;
@@ -97,7 +97,7 @@ LCD `320×240`. Пример передаёт в Slint только точки �
 
 Экран деталей отображает тот же счётчик, а кнопка `Back to home` возвращает на
 главный экран через третий Rust callback. Это показывает, что возвращённое
-`slint-adapter` приложение предоставляет обычный сгенерированный API Slint:
+`slint-mipidsi-adapter` приложение предоставляет обычный сгенерированный API Slint:
 callbacks `on_*` и свойства через `get_*`/`set_*`.
 
 ## Важно о ревизии платы
@@ -107,7 +107,7 @@ callbacks `on_*` и свойства через `get_*`/`set_*`.
 
 ## Связанная документация
 
-- [Основная документация `slint-adapter`](../../README.ru.md)
+- [Основная документация `slint-mipidsi-adapter`](../../README.ru.md)
 - [Основная документация на английском](../../README.md)
 - [Документация M5Stack Core2](https://docs.m5stack.com/en/core/core2)
 - [Rust on ESP: esp-generate](https://docs.espressif.com/projects/rust/book/getting-started/tooling/esp-generate.html)

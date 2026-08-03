@@ -11,7 +11,7 @@ bare-metal `no_std` stack:
 - `mipidsi 0.10` with `ILI9342CRgb565` for the LCD;
 - `ft6336u-driver 1.0` for the touch controller;
 - `axp192 0.2` for LCD power, backlight, and the shared reset line;
-- the local `slint-adapter` crate and Slint's software renderer.
+- the local `slint-mipidsi-adapter` crate and Slint's software renderer.
 
 ## Connected peripherals
 
@@ -90,7 +90,7 @@ below the `320×240` LCD. This example forwards only points with `y < 240` to
 Slint. Samples below the visible display are discarded instead of being
 clamped to the bottom edge.
 
-`slint-adapter` converts the sampled states into:
+`slint-mipidsi-adapter` converts the sampled states into:
 
 - first contact → `PointerPressed`;
 - coordinate change → `PointerMoved`;
@@ -105,7 +105,7 @@ The demo contains two screens. On the home screen:
 
 The details screen displays the same counter and its `Back to home` button
 navigates back through a third Rust callback. This demonstrates that the app
-returned by `slint-adapter` exposes the regular generated Slint API:
+returned by `slint-mipidsi-adapter` exposes the regular generated Slint API:
 `on_*` callbacks and `get_*`/`set_*` properties.
 
 ## Board revision
@@ -116,7 +116,7 @@ configuration and requires a separate power backend.
 
 ## Related documentation
 
-- [Main `slint-adapter` documentation](../../README.md)
+- [Main `slint-mipidsi-adapter` documentation](../../README.md)
 - [Main documentation in Russian](../../README.ru.md)
 - [M5Stack Core2 documentation](https://docs.m5stack.com/en/core/core2)
 - [Rust on ESP: esp-generate](https://docs.espressif.com/projects/rust/book/getting-started/tooling/esp-generate.html)

@@ -1,7 +1,7 @@
 use embedded_hal::i2c::I2c;
 use esp_hal::gpio::Input;
 use ft6336u_driver::{Error, FT6336U, GestureMode, TouchStatus};
-use slint_adapter::{TouchInput, TouchPoint};
+use slint_mipidsi_adapter::{TouchInput, TouchPoint};
 
 const DISPLAY_HEIGHT: u16 = 240;
 
